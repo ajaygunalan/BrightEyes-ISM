@@ -1,7 +1,7 @@
 %% Design the sampling matrix
 clear; close all; clc;
-image_rows = 512;
-image_cols = 512;
+image_rows = 513;
+image_cols = 513;
 [A, samplerMatrix, samplerLinearIdx, CR] = DesignSamplingMatrix(image_rows, image_cols);
 
 %% Do the SPAD array in loop.
