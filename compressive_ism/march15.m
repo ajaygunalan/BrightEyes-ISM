@@ -10,7 +10,7 @@ detector = zeros(image_rows, image_cols, N);
 detector_measurments = zeros(image_rows, image_cols, N);
 detector_recon = zeros(image_rows, image_cols, N);
 for i = 1:N
-    img_name = ['data/detector_', num2str(i), '.png'];
+    img_name = ['data/temp/detector_', num2str(i), '.png'];
     img = imread(img_name);
  
     img_processed = preprocess(img, image_rows, image_cols);
@@ -27,14 +27,14 @@ for i = 1:N
     %% Get Measurments
     detector_measurments(:,:,i) = samplerMatrix.*sample;
     %% Save measurments in a separate file
-    imwrite(detector_measurments(:,:,i), ['data/measure_', num2str(i), '.png']);
+    imwrite(detector_measurments(:,:,i), ['data/temp/measure_', num2str(i), '.png']);
     x =  sample(:);
     y = x(samplerLinearIdx);
     %% Reconstruct it
     [detector_recon(:,:,i), t] = csAj(A, y, image_rows, image_cols);
     
     %% Save reconstructed image in a separate file
-    imwrite(detector_recon(:,:,i), ['data/recon_', num2str(i), '.png']);
+    imwrite(detector_recon(:,:,i), ['data/temp/recon_', num2str(i), '.png']);
     
 end
 
@@ -43,12 +43,12 @@ image_rows = 513;
 image_cols = 513;
 
 % Read the images using the imread function
-confocal = imread('data/Confocal-LSM.png');
-compressive_confocal = imread('data/Compressive-Confocal-LSM.png');
-ism_apr = imread('data/ISM-APR.png');
-compressive_ism_apr = imread('data/Compressive-ISM-apr.png');
-ism_deconv = imread('data/ISM-Deconvolution.png');
-compressive_ism_deconv = imread('data/Compressive-ISM-Deconvolution.png');
+confocal = imread('data/temp/Confocal-LSM.png');
+compressive_confocal = imread('data/temp/Compressive-Confocal-LSM.png');
+ism_apr = imread('data/temp/ISM-APR.png');
+compressive_ism_apr = imread('data/temp/Compressive-ISM-apr.png');
+ism_deconv = imread('data/temp/ISM-Deconvolution.png');
+compressive_ism_deconv = imread('data/temp/Compressive-ISM-Deconvolution.png');
 
 % Apply the preprocess function to each image
 confocal = preprocess(confocal, image_rows, image_cols);
@@ -127,7 +127,7 @@ end
 results_table = cell2table(results, 'VariableNames', column_names);
 
 % Write the table to a CSV file
-writetable(results_table, 'data/results.csv');
+writetable(results_table, 'data/temp/results.csv');
 
 
 
