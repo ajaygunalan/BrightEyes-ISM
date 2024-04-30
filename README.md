@@ -1,3 +1,6 @@
+# Compressive ISM
+[Compressive ISM](https://github.com/ajaygunalan/BrightEyes-ISM/blob/main/compressive_ism/Compressive-ISM.ipynb)
+
 # BrightEyes-ISM
 
 [![License](https://img.shields.io/pypi/l/brighteyes-ism.svg?color=green)](https://github.com/VicidominiLab/BrightEyes-ISM/blob/main/LICENSE)
